@@ -4,11 +4,13 @@ import com.nadeesh.RestAPI.Dto.EmpDto;
 import com.nadeesh.RestAPI.Entity.Employee;
 import com.nadeesh.RestAPI.Mapper.EmpDtoMap;
 import com.nadeesh.RestAPI.Repository.EmpRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
 public class EmpService implements EmpServiceInterface{
 
+    @Autowired
     private EmpRepository empRepository;
     @Override
     public EmpDto createEmployee(EmpDto empDto) {
