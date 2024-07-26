@@ -16,12 +16,19 @@ public class EmpController {
    @Autowired
    private EmpService empService;
 
+   //BUILD ADD EMP METHOD
    @PostMapping
    public ResponseEntity<EmpDto> createEmp(@RequestBody EmpDto empDto){
       EmpDto savedEmp = empService.createEmployee(empDto);
       return new ResponseEntity<>(savedEmp, HttpStatus.CREATED);
+   }   //RESPONSE ENTITY IS RETURN TYPE(type is EmpDto)
+
+
+   //BUILD GET EMP METHOD
+   @GetMapping("{id}")
+   public ResponseEntity<EmpDto> getEmpById(@PathVariable("id") Long empId){
+     EmpDto empDto = empService.getEmployeeById(empId);
+     return ResponseEntity.ok(empDto);
    }
-
-
 
 }
