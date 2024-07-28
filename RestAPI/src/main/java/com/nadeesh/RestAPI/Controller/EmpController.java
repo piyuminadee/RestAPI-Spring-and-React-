@@ -1,12 +1,15 @@
 package com.nadeesh.RestAPI.Controller;
 
 import com.nadeesh.RestAPI.Dto.EmpDto;
+import com.nadeesh.RestAPI.Entity.Employee;
 import com.nadeesh.RestAPI.Service.EmpService;
 import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @AllArgsConstructor
@@ -31,4 +34,12 @@ public class EmpController {
      return ResponseEntity.ok(empDto);
    }
 
+
+   //BUILD GET ALL EMP METHOD
+
+   @GetMapping
+   public ResponseEntity<List<EmpDto>> getAllEmp(){
+      List<EmpDto> em =   empService.allEmp();
+       return ResponseEntity.ok(em);
+   }
 }

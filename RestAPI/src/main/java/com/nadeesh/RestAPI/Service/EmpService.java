@@ -8,6 +8,9 @@ import com.nadeesh.RestAPI.Repository.EmpRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 @Service
 public class EmpService implements EmpServiceInterface{
 
@@ -27,5 +30,12 @@ public class EmpService implements EmpServiceInterface{
                 .orElseThrow(()->
                         new ResourceNotFountException("Employee is not exists with given id "+ empId));
         return EmpDtoMap.maptoEmpDto(employee);  //map employeejpa to Dto obeject
+    }
+
+    @Override
+    public List<EmpDto> allEmp() {
+        List<Employee> emps =  empRepository.findAll();
+        return emps.stream().map((employee) -> EmpDtoMap.maptoEmpDto(employee))
+                .collect(Collectors.toList());
     }
 }
