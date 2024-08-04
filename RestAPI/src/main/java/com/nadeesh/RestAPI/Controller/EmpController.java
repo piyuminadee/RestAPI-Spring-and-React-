@@ -42,4 +42,18 @@ public class EmpController {
       List<EmpDto> em =   empService.allEmp();
        return ResponseEntity.ok(em);
    }
+
+   // //BUILD UPDATE ONE EMP METHOD
+   @PutMapping("{id}")
+   public ResponseEntity<EmpDto> updateEmp(@PathVariable("id") Long empId, @RequestBody EmpDto updateEmp){
+      EmpDto empDto = empService.updateEmpById(empId, updateEmp);
+      return ResponseEntity.ok(empDto);
+   }
+
+   @DeleteMapping("{id}")
+   public ResponseEntity<EmpDto> deleteEmp(@PathVariable("id") Long empId){
+     EmpDto emp = empService.deletEmpById(empId);
+     return ResponseEntity.noContent().build();
+
+   }
 }

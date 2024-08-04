@@ -11,4 +11,8 @@ public interface EmpServiceInterface {
     EmpDto getEmployeeById(Long empId);
 
     List<EmpDto> allEmp();
+
+    EmpDto updateEmpById(Long id ,EmpDto empDto);
+
+    EmpDto deletEmpById(Long id);
 }
